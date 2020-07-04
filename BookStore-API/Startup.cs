@@ -60,7 +60,12 @@ namespace BookStore_API
                 c.IncludeXmlComments(xpath);
             });
 
+            // Services:
+            // Scoped: Create 1 instance per connection
+            // Transient: Create 1 instance per operation
+            // Singleton: Create 1 instance per once application is running
             services.AddSingleton<ILoggerService, LoggerService>();
+            services.AddScoped<IAuthorRepository, AuthorRepository>();
 
             services.AddControllers();
         }
