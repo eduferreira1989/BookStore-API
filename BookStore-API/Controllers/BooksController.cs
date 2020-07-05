@@ -6,6 +6,7 @@ using AutoMapper;
 using BookStore_API.Contracts;
 using BookStore_API.Data;
 using BookStore_API.DTOs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,6 +17,7 @@ namespace BookStore_API.Controllers
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class BooksController : ControllerBase
     {
         private readonly ILoggerService _logger;
@@ -211,7 +213,7 @@ namespace BookStore_API.Controllers
 
         private ObjectResult InternalError(Exception ex)
         {
-            return InternalError($"Error when getting authors:\n{ex.Message}\n\nMore details in Inner exception:\n{ex.InnerException}");
+            return InternalError($"Error when getting books:\n{ex.Message}\n\nMore details in Inner exception:\n{ex.InnerException}");
         }
 
         private ObjectResult InternalError(string message)
