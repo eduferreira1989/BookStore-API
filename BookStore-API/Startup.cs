@@ -66,6 +66,7 @@ namespace BookStore_API
             // Singleton: Create 1 instance per once application is running
             services.AddSingleton<ILoggerService, LoggerService>();
             services.AddScoped<IAuthorRepository, AuthorRepository>();
+            services.AddScoped<IBookRepository, BookRepository>();
 
             services.AddControllers();
         }
